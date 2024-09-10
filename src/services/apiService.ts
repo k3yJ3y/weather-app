@@ -6,8 +6,10 @@ const API_KEY = import.meta.env.VITE_OPEN_WEATHER_API_KEY;
 
 export async function fetchWeatherData(
     city: String
-): Promise<WeatherResponse | null> {
-    if (!city) return null;
+): Promise<WeatherResponse> {
+    if (!city) {
+        throw new Error("City name must be provided.");
+    }
     try {
         const response = await axios.get(
             `https://api.openweathermap.org/data/3.0/weather`,
@@ -19,6 +21,10 @@ export async function fetchWeatherData(
                 },
             }
         );
+
+        if (response.status !== 200) {
+            throw new Error(`Failed to fetch weather data: status code ${response.status}`);
+        }
 
         const { temp, feels_like, temp_min, temp_max, humidity } =
             response.data.main;
@@ -32,6 +38,6 @@ export async function fetchWeatherData(
         };
     } catch (error) {
         console.error("Error fetching weather:", error);
-        return null;
+        throw error;
     }
 }
