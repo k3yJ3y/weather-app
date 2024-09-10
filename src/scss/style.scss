@@ -2,11 +2,31 @@
 @import "./imports/variables.scss";
 @import "./imports/inputs.scss";
 
-
-
-body{
+body {
     margin: 0;
     padding: 0;
     font-family: $default-font-family;
     background-color: $secondary-color;
+
+    .container {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    body {
+        .container {
+            width: 60%;
+            margin: 0 auto;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    body {
+        .container {
+            width: 50%;
+            margin: 0 auto;
+        }
+    }
 }

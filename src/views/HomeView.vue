@@ -1,5 +1,8 @@
 <template>
-    <Search />
+    <div class="container">
+        <Search />
+    </div>
+    
 </template>
 
 <script setup lang="ts">
