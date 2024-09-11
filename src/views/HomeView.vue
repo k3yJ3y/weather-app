@@ -102,14 +102,14 @@ const fetchWeather = async (city: String) => {
         error.value = "";
         updateSearchHistory(city);
     } catch (err) {
-        error.value = "Failed to fetch weather data.";
+        error.value = "Failed to fetch weather data: " + err.response.data.message;
         console.error(err);
     } finally {
         loadingWeather.value = false;
     }
 };
 
-const updateSearchHistory = (city) => {
+const updateSearchHistory = (city: string) => {
     let history = JSON.parse(localStorage.getItem("searchHistory")) || [];
     history.unshift(city);
 
