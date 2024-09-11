@@ -1,6 +1,37 @@
-# Vue 3 + TypeScript + Vite
+# WeatherApp
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+The Weather App is a simple web application built with Vue.js, Vite, and TypeScript that allows users to search for a city and view the current weather data.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
-# weather-app
+### Installation
+
+Follow these steps to set up your development environment:
+
+**1. Clone the repository**
+
+```bash
+git clone https://github.com/k3yJ3y/weather-app.git
+cd weather-app
+```
+
+**2. Install dependencies**
+
+```bash
+npm install
+```
+
+**3. Set up environment variables**
+   Copy the .env.example file to a new file named .env and update it with your OpenWeather API key
+
+```bash
+VITE_WEATHER_API_KEY=your_openweather_api_key_here
+```
+
+**4. Running the Application**
+
+To run the application in development mode, execute:
+
+```bash
+npm run dev
+```
+
+This will start the server on http://localhost:5173, and you can open your web browser to interact with the application.
