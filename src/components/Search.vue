@@ -3,9 +3,9 @@
         <input
             class="search-input"
             type="text"
-            v-model="searchQuery"
-            @input="handleInput"
+            v-model="query"
             placeholder="Search ..."
+            @keyup.enter="handleSearch"
         />
         <button @click="handleSearch" class="search-button">
             <img :src="searchicon" alt="Search Icon" />
@@ -14,7 +14,20 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
 import searchicon from "@assets/icons/search-icon.svg";
+
+const query = ref("");
+
+const emit = defineEmits(["search"]);
+
+const handleSearch = (event) => {
+    if (!query.value.trim()) {
+    } else {
+        emit("search", query.value.trim());
+        query.value = "";
+    }
+};
 </script>
 
 <style scoped lang="scss">
@@ -27,7 +40,7 @@ import searchicon from "@assets/icons/search-icon.svg";
     border: 2px solid darken($primary-color, 10px);
     background-color: #ffffff;
     border-radius: 99px;
-    margin: .5em 0;
+    margin: 0.5em 0;
 
     .search-input {
         background-color: transparent;
@@ -47,13 +60,17 @@ import searchicon from "@assets/icons/search-icon.svg";
         justify-content: center;
         border-radius: 99px;
         margin: 2px;
-        
+
         img {
             height: 25px;
             width: 25px;
             padding: 1px;
-            
         }
     }
+}
+
+.required-field {
+    color: $error-color;
+    font-size: 0.7em;
 }
 </style>
